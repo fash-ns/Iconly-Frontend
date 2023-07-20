@@ -1,0 +1,14 @@
+.background {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-image: linear-gradient(150deg, var(--main), var(--light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 16px;
+}

@@ -1,0 +1,82 @@
+.title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.gridContainer > .gridItem {
+    width: calc(50% - 12px);
+}
+
+@media only screen and (min-width: 600px) {
+    .gridContainer > .gridItem {
+        width: calc(33.333333333% - 16px);
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .gridContainer > .gridItem {
+        width: calc(25% - 18px);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .gridContainer > .gridItem {
+        width: calc(16.666666666% - 20px);
+    }
+}
+
+.card {
+    cursor: pointer;
+    background-color: #ffffff;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, .12);
+    border-radius: 4px;
+    transition: all .3s;
+    text-align: center;
+}
+
+.card.selected {
+    border-color: var(--light);
+    background-color: rgba(66, 165, 245, 0.12);
+}
+
+.card:hover {
+    background-color: rgba(0, 0, 0, .08);
+}
+
+.card > img {
+    height: 170px;
+    object-fit: contain;
+    width: 100%;
+    object-position: center;
+}
+
+.infiniteScroll {
+    text-align: center;
+    margin: 20px 0 10px 0;
+    height: 40px;
+}
+
+.infiniteScroll > .secondaryText {
+    color: #727272;
+    font-style: italic;
+}
+
+.downloadSection {
+    box-shadow: 0 -2px 3px #dddddd;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
