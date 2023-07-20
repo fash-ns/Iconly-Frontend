@@ -1,4 +1,4 @@
-import type {FunctionComponent, FormEventHandler} from "react";
+import type {FunctionComponent, FormEventHandler, ChangeEventHandler} from "react";
 import {useNavigate} from "react-router-dom";
 import TextField from "../../../ui/components/TextField";
 import Button from "../../../ui/components/Button";
@@ -25,7 +25,7 @@ const Register: FunctionComponent<{email: string}> = ({email}) => {
         password_confirmation: ""
     });
 
-    const inputChangeHandler = e => {
+    const inputChangeHandler: ChangeEventHandler<HTMLInputElement> = e => {
         setFormData(prev => ({...prev, [e.target.name]: e.target.value}))
     }
 

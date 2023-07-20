@@ -1,5 +1,4 @@
 import type {AuthenticataleRouteObject} from "./Routes";
-import AuthGate from "../auth/components/AuthGate";
 import AuthEntry from "../../pages/auth";
 import Icons from "../../pages";
 import {MainRoot} from "../main/components/MainRoot";

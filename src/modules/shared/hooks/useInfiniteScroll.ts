@@ -4,7 +4,7 @@ import type {AxiosRequestConfig} from "axios";
 
 export interface CallbackContext<T> {
     setFinished: Dispatch<SetStateAction<boolean>>,
-    lastData: T
+    lastData: T | null
 }
 
 /***

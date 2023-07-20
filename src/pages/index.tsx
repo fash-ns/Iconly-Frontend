@@ -1,12 +1,9 @@
 import {useEffect, useMemo, useState} from "react";
 import getLocalStorageJson from "../modules/shared/utils/getLocalStorageJson";
-import styles from "../modules/icons/css/root.module.css";
 import useInfiniteScroll from "../modules/shared/hooks/useInfiniteScroll";
-import Progress from "../modules/ui/components/Progress";
 import axios from "axios";
 import type {LaravelPagination} from "../modules/shared/types/LaravelPagination";
 import type {IconEntity} from "../modules/icons/types/IconEntity";
-import Button from "../modules/ui/components/Button";
 import IconList from "../modules/icons/component/IconList";
 
 export default function Icons() {
