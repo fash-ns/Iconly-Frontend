@@ -32,32 +32,6 @@
     }
 }
 
-.card {
-    cursor: pointer;
-    background-color: #ffffff;
-    padding: 16px;
-    border: 1px solid rgba(0, 0, 0, .12);
-    border-radius: 4px;
-    transition: all .3s;
-    text-align: center;
-}
-
-.card.selected {
-    border-color: var(--light);
-    background-color: rgba(66, 165, 245, 0.12);
-}
-
-.card:hover {
-    background-color: rgba(0, 0, 0, .08);
-}
-
-.card > img {
-    height: 170px;
-    object-fit: contain;
-    width: 100%;
-    object-position: center;
-}
-
 .infiniteScroll {
     text-align: center;
     margin: 20px 0 10px 0;

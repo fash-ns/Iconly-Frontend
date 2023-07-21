@@ -4,6 +4,7 @@ import Progress from "../../ui/components/Progress";
 import axios from "axios";
 import Button from "../../ui/components/Button";
 import type {IconEntity} from "../types/IconEntity";
+import IconCard from "./IconCard";
 
 export interface IconListPropsType {
     selectedIds: number[];
@@ -23,11 +24,8 @@ const IconList: FunctionComponent<IconListPropsType> = (props) => (
             <div className={styles.gridContainer}>
                 {props.renderableData.map((item) => (
                     <div className={styles.gridItem} key={item.id}>
-                        <div className={styles.card + ' ' + (props.isIdSelected(item.id) ? styles.selected : '')}
-                             onClick={() => props.handleSelect(item.id)}>
-                            <img alt="" src={item.file_path}/>
-                            <span>{item.name}</span>
-                        </div>
+                        <IconCard selected={false} onClick={() => props.handleSelect(item.id)}
+                                  image={item.file_path} name={item.name}/>
                     </div>
                 ))}
             </div>

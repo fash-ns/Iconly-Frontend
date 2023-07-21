@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import getLocalStorageJson from "../modules/shared/utils/getLocalStorageJson";
 import useInfiniteScroll from "../modules/shared/hooks/useInfiniteScroll";
 import axios from "axios";
@@ -38,15 +38,15 @@ export default function Icons() {
      * Checks if provided id is in selectedIds.
      * @param id
      */
-    function isIdSelected(id: number) {
+    const isIdSelected = useCallback((id: number) => {
         return selectedIds.includes(id)
-    }
+    }, [selectedIds])
 
     /***
      * Adds provided id to selectedIds state and localstorage in order to make the ids persisted during refreshes.
      * @param id
      */
-    function handleSelect(id: number) {
+    const handleSelect = useCallback((id: number) => {
         setSelectedIds(prev => {
             let updated;
             if (isIdSelected(id)) updated = prev.filter(item => item !== id);
@@ -54,12 +54,12 @@ export default function Icons() {
             localStorage.setItem("selectedIds", JSON.stringify(updated));
             return updated;
         });
-    }
+    }, []);
 
-    function unselectAll() {
+    const unselectAll = useCallback(() => {
         setSelectedIds([]);
         localStorage.setItem("selectedIds", '[]');
-    }
+    }, [])
 
     return (<IconList selectedIds={selectedIds} renderableData={renderableData} isIdSelected={isIdSelected}
                       handleSelect={handleSelect} unselectAll={unselectAll} loading={loading} finished={finished}/>)
