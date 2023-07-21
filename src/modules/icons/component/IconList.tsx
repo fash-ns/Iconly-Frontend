@@ -24,7 +24,7 @@ const IconList: FunctionComponent<IconListPropsType> = (props) => (
             <div className={styles.gridContainer}>
                 {props.renderableData.map((item) => (
                     <div className={styles.gridItem} key={item.id}>
-                        <IconCard selected={false} onClick={() => props.handleSelect(item.id)}
+                        <IconCard selected={props.isIdSelected(item.id)} onClick={() => props.handleSelect(item.id)}
                                   image={item.file_path} name={item.name}/>
                     </div>
                 ))}

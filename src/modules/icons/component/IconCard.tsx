@@ -1,6 +1,5 @@
 import type {FunctionComponent} from "react";
 import styles from "../css/icon-card.module.css";
-import {memo} from "react";
 
 export interface IconCardPropsType {
     selected: boolean;

@@ -11,6 +11,7 @@ export default function Icons() {
     // Memorizes initial user selected ids. So changes in user selected icons will not affect other pages data.
     const excludedIds = useMemo(() => selectedIds.join(','), []);
     const [selectedIcons, setSelectedIcons] = useState<IconEntity[]>([]);
+
     // Usage of useInfiniteScroll
     const {loading, finished, data, fetch} = useInfiniteScroll<LaravelPagination<IconEntity>>(async ({lastData, setFinished}, conf = {}) => {
         const page = lastData ? lastData.meta.current_page + 1 : 1;
@@ -31,11 +32,16 @@ export default function Icons() {
         return () => controller.abort();
     }, [])
 
-    const renderableData: IconEntity[] = [...selectedIcons];
-    data.forEach(item => renderableData.push(...item.data));
+    // Memorized data in order not to create the data object on each re-render.
+    const renderableData: IconEntity[] = useMemo(() => {
+        const finalData = [...selectedIcons];
+        data.forEach(item => finalData.push(...item.data));
+        return finalData;
+    }, [selectedIcons, data])
 
     /***
-     * Checks if provided id is in selectedIds.
+     * Checks if provided id is in selectedIds. Memorized function definition in order not to define the function on
+     * each re-render.
      * @param id
      */
     const isIdSelected = useCallback((id: number) => {
@@ -44,6 +50,7 @@ export default function Icons() {
 
     /***
      * Adds provided id to selectedIds state and localstorage in order to make the ids persisted during refreshes.
+     * Memorized function definition in order not to define the function on each re-render
      * @param id
      */
     const handleSelect = useCallback((id: number) => {
@@ -54,8 +61,11 @@ export default function Icons() {
             localStorage.setItem("selectedIds", JSON.stringify(updated));
             return updated;
         });
-    }, []);
+    }, [isIdSelected]);
 
+    /***
+     * Memorized function in order to create it once as the function doesn't depend on any states.
+     */
     const unselectAll = useCallback(() => {
         setSelectedIds([]);
         localStorage.setItem("selectedIds", '[]');
